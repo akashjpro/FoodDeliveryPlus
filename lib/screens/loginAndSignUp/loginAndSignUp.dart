@@ -19,40 +19,52 @@ class LoginAndSignUpState extends State<LoginAndSignUp> {
         snap: _snap,
         floating: _floating,
         expandedHeight: 160.0,
+        backgroundColor: Colors.white,
         flexibleSpace: const FlexibleSpaceBar(
           title: Text(''),
-          background: FlutterLogo(),
+          background: Image(image: AssetImage('images/logo_login.png')),
         ),
       ),
-      AppBar(
-        title: const Text('TabBar Widget'),
-        bottom: const TabBar(
-          tabs: <Widget>[
-            Tab(
-              icon: Icon(Icons.cloud_outlined),
+      SliverFillRemaining(
+        child: new Container(
+          child: DefaultTabController(
+            initialIndex: 1,
+            length: 2,
+            child: Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.white,
+                title: const Text(''),
+                bottom: const TabBar(
+                  tabs: <Widget>[
+                    Tab(
+                        icon: Text("Login",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                            textDirection: TextDirection.ltr)),
+                    Tab(
+                      icon: Text("Sign-up",
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold),
+                          textDirection: TextDirection.ltr),
+                    ),
+                  ],
+                ),
+              ),
+              body: const TabBarView(
+                children: <Widget>[
+                  Center(
+                    child: Text("Login Screen"),
+                  ),
+                  Center(
+                    child: Text("Sign-up Screen"),
+                  ),
+                ],
+              ),
             ),
-            Tab(
-              icon: Icon(Icons.beach_access_sharp),
-            ),
-            Tab(
-              icon: Icon(Icons.brightness_5_sharp),
-            ),
-          ],
+          ),
         ),
-      ),
-      TabBarView(
-        children: <Widget>[
-          Center(
-            child: Text("It's cloudy here"),
-          ),
-          Center(
-            child: Text("It's rainy here"),
-          ),
-          Center(
-            child: Text("It's sunny here"),
-          ),
-        ],
-      ),
+      )
     ]));
   }
 }
