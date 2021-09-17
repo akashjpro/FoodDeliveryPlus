@@ -1,78 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/constants.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+import 'package:food_delivery/screens/screens.dart';
 import 'package:food_delivery/theme.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  // This widget is the root of your application.
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: theme(),
-      home: Scaffold(
-        body: SafeArea(
-          child: Stack(
-            children: [
-              widgetOptions.elementAt(_selectedIndex),
-            ],
-          ),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.grey[100],
-          type: BottomNavigationBarType.fixed,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                size: 25,
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.favorite_outline,
-                size: 25,
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person_outline,
-                size: 25,
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.history,
-                size: 25,
-              ),
-              label: '',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Color(0xFFFA4A0C),
-          unselectedItemColor: Color(0xFFADADAF),
-          onTap: _onItemTapped,
-        ),
-      ),
+      home: Bridge(),
     );
+  }
+}
+
+class Bridge extends StatefulWidget {
+  const Bridge({Key? key}) : super(key: key);
+
+  @override
+  _BridgeState createState() => _BridgeState();
+}
+
+class _BridgeState extends State<Bridge> {
+  final _zoomDrawerController = ZoomDrawerController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: ZoomDrawer(
+      style: DrawerStyle.Style1,
+      controller: _zoomDrawerController,
+      mainScreen: HomeScreen(drawerController: _zoomDrawerController),
+      menuScreen: DrawerScreen(),
+      borderRadius: 30.0,
+      showShadow: true,
+      angle: 0.0,
+      backgroundColor: Colors.grey[300]!,
+      slideWidth: MediaQuery.of(context).size.width * .65,
+    )
+        // (ZoomDrawer.of(context)!.widget.isRtl ? .45 : 0.65)),
+        );
   }
 }

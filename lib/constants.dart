@@ -28,3 +28,26 @@ List<Widget> widgetOptions = [
   Text('screen 3'),
   Text('screen 4'),
 ];
+
+List<Map> menu = [
+  {
+    'icon': Icon(Icons.person_outline_rounded, color: Colors.white),
+    'title': 'Profile'
+  },
+  {
+    'icon': Icon(Icons.add_shopping_cart, color: Colors.white),
+    'title': 'Orders'
+  },
+  {
+    'icon': Icon(Icons.local_offer_outlined, color: Colors.white),
+    'title': 'Offer and Promo'
+  },
+  {
+    'icon': Icon(Icons.sticky_note_2_outlined, color: Colors.white),
+    'title': 'Privacy Policy'
+  },
+  {
+    'icon': Icon(Icons.security_outlined, color: Colors.white),
+    'title': 'Security'
+  },
+];

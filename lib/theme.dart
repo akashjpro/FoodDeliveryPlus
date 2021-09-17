@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 ThemeData theme() {
   return ThemeData(
-    primaryColor: Color(0xFFFA4A0C),
-    backgroundColor: Color(0xFFBCBABA),
+    backgroundColor: Color(0xFFFA4A0C),
+    primaryColor: Colors.grey[200],
     scaffoldBackgroundColor: Colors.grey[100],
     textTheme: TextTheme(
       headline1: TextStyle(
