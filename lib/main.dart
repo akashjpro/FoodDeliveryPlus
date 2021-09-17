@@ -12,62 +12,62 @@ class MyApp extends StatelessWidget {
         name: 'Veggie tomato mix',
         price: 1.900,
         img: 'images/item_img.png',
-        quantity: 1),
+        quanlity: 1),
     FoodCart(
         name: 'Veggie tomato mix',
         price: 1.900,
         img: 'images/item_img.png',
-        quantity: 1),
+        quanlity: 1),
     FoodCart(
         name: 'Veggie tomato mix',
         price: 1.900,
         img: 'images/item_img.png',
-        quantity: 1),
+        quanlity: 1),
     FoodCart(
         name: 'Veggie tomato mix',
         price: 1.900,
         img: 'images/item_img.png',
-        quantity: 1),
+        quanlity: 1),
     FoodCart(
         name: 'Veggie tomato mix',
         price: 1.900,
         img: 'images/item_img.png',
-        quantity: 1),
+        quanlity: 1),
     FoodCart(
         name: 'Veggie tomato mix',
         price: 1.900,
         img: 'images/item_img.png',
-        quantity: 1),
+        quanlity: 1),
     FoodCart(
         name: 'Veggie tomato mix',
         price: 1.900,
         img: 'images/item_img.png',
-        quantity: 1),
+        quanlity: 1),
     FoodCart(
         name: 'Veggie tomato mix',
         price: 1.900,
         img: 'images/item_img.png',
-        quantity: 1),
+        quanlity: 1),
     FoodCart(
         name: 'Veggie tomato mix',
         price: 1.900,
         img: 'images/item_img.png',
-        quantity: 1),
+        quanlity: 1),
     FoodCart(
         name: 'Veggie tomato mix',
         price: 1.900,
         img: 'images/item_img.png',
-        quantity: 1),
+        quanlity: 1),
     FoodCart(
         name: 'Veggie tomato mix',
         price: 1.900,
         img: 'images/item_img.png',
-        quantity: 1),
+        quanlity: 1),
     FoodCart(
         name: 'Veggie tomato mix',
         price: 1.900,
         img: 'images/item_img.png',
-        quantity: 1),
+        quanlity: 1),
   ];
   // This widget is the root of your application.
   @override
