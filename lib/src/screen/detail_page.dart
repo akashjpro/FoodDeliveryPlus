@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:food_delivery/helper/api.dart';
+import 'package:food_delivery/model/food_model.dart';
 import 'package:food_delivery/size_config.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -25,7 +27,19 @@ class _DetailPageState extends State<DetailPage> {
     'assets/images/image_2.png',
     'assets/images/image_2.png',
     'assets/images/image_2.png',
+    'assets/images/image_2.png',
   ];
+
+  late Future<FoodModel> foodModel;
+  late String foodId = '40fc68da-eb8d-42a5-bd91-250fd2996b19';
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    foodModel = fetchFood(foodId);
+    print(foodModel);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +59,7 @@ class _DetailPageState extends State<DetailPage> {
               child: Center(child: SmoothPage()),
             ),
             Container(
-              margin: EdgeInsets.only(
-                  //top: SizeConfig.screenheight * 0.08,
-                  ),
+              margin: EdgeInsets.only(top: 10),
               child: TextFoodDetail(),
             ),
             Container(
@@ -154,12 +166,23 @@ class _DetailPageState extends State<DetailPage> {
 
   Widget TextFoodDetail() {
     return Center(
-      child: Text(
-        'Veggie tomato mix',
-        style: TextStyle(
-          fontSize: 28,
-          fontWeight: FontWeight.bold,
-        ),
+      child: FutureBuilder<FoodModel>(
+        future: foodModel,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Text(
+              snapshot.data!.foodName,
+              style: TextStyle(
+                fontSize: 28,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            );
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error}');
+          }
+          return CircularProgressIndicator();
+        },
       ),
     );
   }
@@ -169,34 +192,57 @@ class _DetailPageState extends State<DetailPage> {
       width: SizeConfig.screenwidth,
       height: SizeConfig.screenheight * 0.3,
       margin: EdgeInsets.only(top: 10),
-      child: PageView.builder(
-        controller: _pageviewcontroller,
-        itemCount: images.length,
-        itemBuilder: (items, index) {
-          return Image.asset(
-            images[index],
-            filterQuality: FilterQuality.high,
-            fit: BoxFit.fitHeight,
-          );
-        },
-      ),
+      child: FutureBuilder<FoodModel>(
+          future: foodModel,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return PageView.builder(
+                controller: _pageviewcontroller,
+                itemCount: snapshot.data!.images.length,
+                itemBuilder: (items, index) {
+                  if (snapshot.hasData) {
+                    return Image.network(
+                      snapshot.data!.images[index].imageUrl,
+                      fit: BoxFit.fill,
+                    );
+                  } else if (snapshot.hasError) {
+                    return Text('${snapshot.error}');
+                  }
+                  return CircularProgressIndicator();
+                },
+              );
+            } else if (snapshot.hasError) {
+              return Text('${snapshot.error}');
+            }
+            return CircularProgressIndicator();
+          }),
     );
   }
 
   Widget SmoothPage() {
-    return SmoothPageIndicator(
-      count: images.length,
-      controller: _pageviewcontroller,
-      effect: WormEffect(
-        spacing: 10.0,
-        //radius: 4.0,
-        dotWidth: 10.0,
-        dotHeight: 10.0,
-        //strokeWidth: 1,
-        dotColor: Colors.grey,
-        activeDotColor: Colors.red,
-      ),
-    );
+    return FutureBuilder<FoodModel>(
+        future: foodModel,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return SmoothPageIndicator(
+              count: snapshot.data!.images.length,
+              controller: _pageviewcontroller,
+              effect: WormEffect(
+                spacing: 10.0,
+                //radius: 4.0,
+                dotWidth: 10.0,
+                dotHeight: 10.0,
+                //strokeWidth: 1,
+                dotColor: Colors.grey,
+                activeDotColor: Colors.red,
+              ),
+            );
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error}');
+          }
+
+          return CircularProgressIndicator();
+        });
   }
 
   Widget Rich_Text() {
