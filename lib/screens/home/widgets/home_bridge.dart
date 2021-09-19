@@ -6,6 +6,8 @@ import 'package:food_delivery/screens/drawer/drawer_screen.dart';
 import '../home_screen.dart';
 
 class HomeBridge extends StatefulWidget {
+  static String routeName = "/HomeBridge";
+
   const HomeBridge({Key? key}) : super(key: key);
 
   @override

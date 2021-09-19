@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/routes.dart';
 import 'package:food_delivery/screens/cart/cart_screen.dart';
 import 'package:food_delivery/screens/loginAndSignUp/loginAndSignUp.dart';
 import 'package:food_delivery/theme.dart';
@@ -13,7 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: theme(),
-      home: LoginAndSignUp(),
+      initialRoute: LoginAndSignUp.routeName,
+      routes: routes,
     );
   }
 }

@@ -52,7 +52,7 @@ class CartState extends State<Cart> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('images/icon_swipe.png'),
+                  Image.asset('assets/images/icon_swipe.png'),
                   SizedBox(width: 5),
                   Text(
                     'swipe on an item to delete',

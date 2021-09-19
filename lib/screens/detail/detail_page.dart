@@ -8,6 +8,9 @@ import 'package:food_delivery/size_config.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class DetailPage extends StatefulWidget {
+
+  static String routeName = "/DetailPage";
+
   const DetailPage({Key? key}) : super(key: key);
 
   @override

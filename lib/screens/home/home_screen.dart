@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_delivery/constants.dart';
+import 'package:food_delivery/screens/cart/cart_screen.dart';
+import 'package:food_delivery/screens/detail/detail_page.dart';
 import 'package:food_delivery/screens/home/widgets/food_container.dart';
 
 class HomeScreen extends StatefulWidget {
   final drawerController;
+
   const HomeScreen({Key? key, this.drawerController}) : super(key: key);
 
   @override
@@ -13,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -49,7 +53,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushNamed(context, CartScreen.routeName);
+                          },
                           child: Container(
                             height: 24,
                             width: 24,
@@ -119,17 +125,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Expanded(
                       child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: foods.length,
-                        itemBuilder: (_, index) => Padding(
-                          padding: const EdgeInsets.only(right: 30.0),
-                          child: FoodContainer(
-                            imgPath: foods[index]['imgPath'],
-                            name: foods[index]['name'],
-                            price: foods[index]['price'],
-                          ),
-                        ),
-                      ),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: foods.length,
+                          itemBuilder: (_, index) => GestureDetector(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right: 30.0),
+                                  child: FoodContainer(
+                                    imgPath: foods[index]['imgPath'],
+                                    name: foods[index]['name'],
+                                    price: foods[index]['price'],
+                                  ),
+                                ),
+                                onTap: () => {
+                                  Navigator.pushNamed(
+                                      context, DetailPage.routeName)
+                                },
+                              )),
                     ),
                     // const SizedBox(height: 20.0),
                   ],
