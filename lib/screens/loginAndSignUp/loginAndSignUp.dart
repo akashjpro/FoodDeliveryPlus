@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/helper/api_helper.dart';
+import 'package:food_delivery/model/request/login_request.dart';
+import 'package:food_delivery/model/response/login_response.dart';
 import 'package:food_delivery/screens/home/widgets/home_bridge.dart';
 
 class LoginAndSignUp extends StatefulWidget {
@@ -12,6 +15,9 @@ class LoginAndSignUpState extends State<LoginAndSignUp> {
   bool _pinned = true;
   bool _snap = false;
   bool _floating = false;
+  bool _isDialogLoadingShowing = false;
+
+  var apiHelper = ApiHelper();
 
   var _emailController = TextEditingController();
   var _passwordController = TextEditingController();
@@ -258,14 +264,48 @@ class LoginAndSignUpState extends State<LoginAndSignUp> {
     var password = _passwordController.text;
 
     if (email.isEmpty || password.isEmpty) {
-      _showDialog("Error", "Email or password is not empty!");
+      _showAlertDialog("Error", "Email or password is not empty!");
+
       return;
     }
 
-    Navigator.pushReplacementNamed(context, HomeBridge.routeName);
+    _showLoaderDialog(context);
+
+    var request = LoginRequest(email, password);
+    var userId;
+    var errorMessage;
+
+    apiHelper.requestAPI<LoginResponse>(
+        request,
+        apiHelper.client.login(request),
+        ((loginResponse) => {
+              if (_isDialogLoadingShowing)
+                {
+                  Navigator.pop(context),
+                  _isDialogLoadingShowing = false,
+                },
+
+              userId = loginResponse.userId,
+              print("userId: $userId"),
+
+              // Navigate to home
+              Navigator.pushReplacementNamed(context, HomeBridge.routeName)
+            }),
+        (error) => {
+              if (_isDialogLoadingShowing)
+                {
+                  Navigator.pop(context),
+                  _isDialogLoadingShowing = false,
+                },
+              errorMessage = error.getErrorMessage(),
+              print("errorMessage: $errorMessage"),
+
+              //Show error login
+              _showAlertDialog("Error", errorMessage)
+            });
   }
 
-  _showDialog(String title, String content) {
+  _showAlertDialog(String title, String content) {
     showDialog<void>(
       context: context,
       builder: (BuildContext context) {
@@ -284,4 +324,25 @@ class LoginAndSignUpState extends State<LoginAndSignUp> {
       },
     );
   }
+
+  _showLoaderDialog(BuildContext context) {
+    _isDialogLoadingShowing = true;
+    AlertDialog alert = AlertDialog(
+      content: new Row(
+        children: [
+          CircularProgressIndicator(),
+          Container(
+              margin: EdgeInsets.only(left: 7), child: Text("Loading...")),
+        ],
+      ),
+    );
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
 }
