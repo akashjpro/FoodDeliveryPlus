@@ -22,7 +22,7 @@ class LoginAndSignUpState extends State<LoginAndSignUp> {
         backgroundColor: Colors.white,
         flexibleSpace: const FlexibleSpaceBar(
           title: Text(''),
-          background: Image(image: AssetImage('images/logo_login.png')),
+          background: Image(image: AssetImage('assets/images/logo_login.png')),
         ),
       ),
       SliverFillRemaining(
