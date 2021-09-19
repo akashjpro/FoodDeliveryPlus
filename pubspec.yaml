@@ -36,6 +36,7 @@ dependencies:
   json_annotation: any
   dio: any
   equatable: any
+  flutter_slidable: ^0.6.0
 
 dev_dependencies:
   flutter_test:
@@ -62,6 +63,8 @@ flutter:
     - assets/images/
     - assets/fonts/
     - assets/icons/
+    - images/item_img.png
+    - images/icon_swipe.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -88,5 +91,17 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
+    - family: Exo_2
+      fonts:
+        - asset: fonts/Exo2-Regular.ttf
+        - asset: fonts/Exo2-Bold.ttf
+          weight: 700
+        - asset: fonts/Exo2-Black.ttf
+          weight: 900
+    - family: ZenDots
+      fonts:
+        - asset: fonts/ZenDots-Regular.ttf
+
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
