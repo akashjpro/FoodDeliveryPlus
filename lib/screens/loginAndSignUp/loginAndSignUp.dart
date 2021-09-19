@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/screens/home/widgets/home_bridge.dart';
 
 class LoginAndSignUp extends StatefulWidget {
-
   static String routeName = "/LoginAndSignUp";
 
   @override
@@ -14,10 +13,11 @@ class LoginAndSignUpState extends State<LoginAndSignUp> {
   bool _snap = false;
   bool _floating = false;
 
+  var _emailController = TextEditingController();
+  var _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController _controller = TextEditingController();
-
     return Scaffold(
         body: CustomScrollView(slivers: <Widget>[
       SliverAppBar(
@@ -80,6 +80,7 @@ class LoginAndSignUpState extends State<LoginAndSignUp> {
                         ),
                         Container(
                           child: TextField(
+                            controller: _emailController,
                             decoration: InputDecoration(
                               border: UnderlineInputBorder(),
                               hintText: 'Dosamarvis@gmail.com',
@@ -104,6 +105,7 @@ class LoginAndSignUpState extends State<LoginAndSignUp> {
                         ),
                         Container(
                           child: TextField(
+                            controller: _passwordController,
                             decoration: InputDecoration(
                               border: UnderlineInputBorder(),
                               hintText: '* * * * * * * * ',
@@ -127,7 +129,7 @@ class LoginAndSignUpState extends State<LoginAndSignUp> {
                           height: 50,
                           child: ElevatedButton(
                             onPressed: () {
-                              Navigator.pushReplacementNamed(context, HomeBridge.routeName);
+                              _processLogin();
                             },
                             child: Text('Login',
                                 style: TextStyle(
@@ -241,5 +243,45 @@ class LoginAndSignUpState extends State<LoginAndSignUp> {
         ),
       )
     ]));
+  }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  _processLogin() {
+    var email = _emailController.text;
+    var password = _passwordController.text;
+
+    if (email.isEmpty || password.isEmpty) {
+      _showDialog("Error", "Email or password is not empty!");
+      return;
+    }
+
+    Navigator.pushReplacementNamed(context, HomeBridge.routeName);
+  }
+
+  _showDialog(String title, String content) {
+    showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("$title"),
+          content: Text("$content"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
