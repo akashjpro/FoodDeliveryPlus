@@ -63,13 +63,13 @@ flutter:
     - assets/images/
     - assets/fonts/
     - assets/icons/
-    - images/item_img.png
-    - images/icon_swipe.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
     - assets/images/logo_login.png
+    - assets/images/item_img.png
+    - assets/images/icon_swipe.png
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages

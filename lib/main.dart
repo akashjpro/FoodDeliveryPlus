@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-import 'package:food_delivery/screens/home/widgets/home_bridge.dart';
-import 'package:food_delivery/screens/screens.dart';
+import 'package:food_delivery/screens/cart/cart_screen.dart';
+import 'package:food_delivery/screens/loginAndSignUp/loginAndSignUp.dart';
 import 'package:food_delivery/theme.dart';
 
 void main() {
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: theme(),
-      home: HomeBridge(),
+      home: LoginAndSignUp(),
     );
   }
 }
