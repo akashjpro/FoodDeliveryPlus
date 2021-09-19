@@ -212,10 +212,31 @@
             </list>
           </value>
         </entry>
+        <entry key="flutter_svg">
+          <value>
+            <list>
+              <option value="/Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter_test">
           <value>
             <list>
               <option value="/Volumes/Macintosh HD - Data/development/flutter/packages/flutter_test/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="flutter_zoom_drawer">
+          <value>
+            <list>
+              <option value="/Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_zoom_drawer-2.1.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="font_awesome_flutter">
+          <value>
+            <list>
+              <option value="/Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/font_awesome_flutter-9.1.0/lib" />
             </list>
           </value>
         </entry>
@@ -345,10 +366,31 @@
             </list>
           </value>
         </entry>
+        <entry key="path_drawing">
+          <value>
+            <list>
+              <option value="/Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_drawing-0.5.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="path_parsing">
+          <value>
+            <list>
+              <option value="/Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_parsing-0.2.1/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="pedantic">
           <value>
             <list>
               <option value="/Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.11.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="petitparser">
+          <value>
+            <list>
+              <option value="/Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/petitparser-4.1.0/lib" />
             </list>
           </value>
         </entry>
@@ -412,6 +454,13 @@
           <value>
             <list>
               <option value="/Volumes/Macintosh HD - Data/development/flutter/bin/cache/pkg/sky_engine/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="smooth_page_indicator">
+          <value>
+            <list>
+              <option value="/Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/smooth_page_indicator-1.0.0+2/lib" />
             </list>
           </value>
         </entry>
@@ -513,6 +562,13 @@
             </list>
           </value>
         </entry>
+        <entry key="xml">
+          <value>
+            <list>
+              <option value="/Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/xml-5.1.2/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="yaml">
           <value>
             <list>
@@ -552,6 +608,9 @@
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/file-6.1.2/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/fixnum-1.0.0/lib" />
+      <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib" />
+      <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_zoom_drawer-2.1.1/lib" />
+      <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/font_awesome_flutter-9.1.0/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/freezed-0.14.2/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/freezed_annotation-0.14.2/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/frontend_server_client-2.1.2/lib" />
@@ -570,7 +629,10 @@
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/mime-1.0.0/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/package_config-2.0.2/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0/lib" />
+      <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_drawing-0.5.1/lib" />
+      <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_parsing-0.2.1/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.11.1/lib" />
+      <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/petitparser-4.1.0/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/pool-1.5.0/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/pub_semver-2.1.0/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/pubspec_parse-1.0.0/lib" />
@@ -579,6 +641,7 @@
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/retrofit_generator-2.0.1/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/shelf-1.2.0/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/shelf_web_socket-1.0.1/lib" />
+      <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/smooth_page_indicator-1.0.0+2/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/source_gen-1.0.3/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/source_span-1.8.1/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/stack_trace-1.10.0/lib" />
@@ -593,6 +656,7 @@
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/watcher-1.0.0/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/web_socket_channel-2.1.0/lib" />
+      <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/xml-5.1.2/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/.pub-cache/hosted/pub.dartlang.org/yaml-3.1.0/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/bin/cache/pkg/sky_engine/lib" />
       <root url="file:///Volumes/Macintosh HD - Data/development/flutter/packages/flutter/lib" />
