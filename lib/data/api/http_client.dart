@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:food_delivery/data/api/json_parser/json_parser.dart';
 

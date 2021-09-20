@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-import 'package:food_delivery/data/repositories/repositories.dart';
 import 'package:food_delivery/screens/screens.dart';
 import 'package:food_delivery/theme.dart';
 
 void main() {
-  // runApp(MyApp());
-  FoodRepository _foodRepo = FoodRepository();
-  _foodRepo.getAllFoods('0', '10').then((value) => print(value));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

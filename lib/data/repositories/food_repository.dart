@@ -1,6 +1,6 @@
 import 'package:food_delivery/data/api/http_client.dart';
 import 'package:food_delivery/data/api/json_parser/json_parser.dart';
-import 'package:food_delivery/data/models/models.dart';
+import 'package:food_delivery/model/food/food.dart';
 
 class FoodRepository {
   late Request _request;

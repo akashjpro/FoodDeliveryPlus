@@ -1,5 +1,5 @@
 import 'package:food_delivery/data/api/json_parser/json_parser.dart';
-import 'package:food_delivery/data/models/food.dart';
+import 'package:food_delivery/model/food/food.dart';
 
 class FoodParser extends JsonParser<Food> with ObjectDecoder<Food> {
   const FoodParser();

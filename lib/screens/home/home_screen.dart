@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_delivery/constants.dart';
+import 'package:food_delivery/data/repositories/repositories.dart';
 import 'package:food_delivery/screens/home/widgets/food_container.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,11 +13,19 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  FoodRepository _foodRepo = FoodRepository();
+
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _foodRepo.getAllFoods('0', '10').then((value) => print(value));
   }
 
   @override
