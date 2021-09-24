@@ -1,4 +1,4 @@
-#Sun Sep 19 13:41:23 ICT 2021
-base.0=/Users/akashjpro/Desktop/Trainning /Flutter/FoodDeliveryPlus/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
-renamed.0=classes.dex
+#Fri Sep 24 15:55:02 ICT 2021
+base.0=D\:\\New folder (7)\\FoodDeliveryPlus\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
+renamed.0=classes.dex
