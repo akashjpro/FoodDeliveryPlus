@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_delivery/constants.dart';
-import 'package:food_delivery/screens/cart/cart_screen.dart';
+import 'package:food_delivery/screens/cart/cart.dart';
 import 'package:food_delivery/screens/detail/detail_page.dart';
 import 'package:food_delivery/screens/home/widgets/food_container.dart';
 
@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.pushNamed(context, CartScreen.routeName);
+                            Navigator.pushNamed(context, Cart.routeName);
                           },
                           child: Container(
                             height: 24,

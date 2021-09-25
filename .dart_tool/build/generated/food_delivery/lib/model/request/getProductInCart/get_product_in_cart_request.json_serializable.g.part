@@ -1,0 +1,11 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+GetProductInCartRequest _$GetProductInCartRequestFromJson(
+        Map<String, dynamic> json) =>
+    GetProductInCartRequest();
+
+Map<String, dynamic> _$GetProductInCartRequestToJson(
+        GetProductInCartRequest instance) =>
+    <String, dynamic>{};

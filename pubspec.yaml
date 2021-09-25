@@ -23,6 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  shared_preferences: ^2.0.8
   flutter_svg: ^0.22.0
   flutter_zoom_drawer: ^2.1.1
   # The following adds the Cupertino Icons font to your application.
@@ -72,7 +73,7 @@ flutter:
     - assets/images/logo_login.png
     - assets/images/item_img.png
     - assets/images/icon_swipe.png
-
+    - assets/images/food_1.png
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
 

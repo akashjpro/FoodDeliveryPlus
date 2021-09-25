@@ -3,6 +3,7 @@ import 'package:food_delivery/helper/api_helper.dart';
 import 'package:food_delivery/model/request/login_request.dart';
 import 'package:food_delivery/model/response/login_response.dart';
 import 'package:food_delivery/screens/home/widgets/home_bridge.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginAndSignUp extends StatefulWidget {
   static String routeName = "/LoginAndSignUp";
@@ -16,7 +17,7 @@ class LoginAndSignUpState extends State<LoginAndSignUp> {
   bool _snap = false;
   bool _floating = false;
   bool _isDialogLoadingShowing = false;
-
+  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   var apiHelper = ApiHelper();
 
   var _emailController = TextEditingController();
@@ -274,7 +275,6 @@ class LoginAndSignUpState extends State<LoginAndSignUp> {
     var request = LoginRequest(email, password);
     var userId;
     var errorMessage;
-
     apiHelper.requestAPI<LoginResponse>(
         request,
         apiHelper.client.login(request),
@@ -286,6 +286,7 @@ class LoginAndSignUpState extends State<LoginAndSignUp> {
                 },
 
               userId = loginResponse.userId,
+              _savingTokenID(loginResponse.token),
               print("userId: $userId"),
 
               // Navigate to home
@@ -303,6 +304,12 @@ class LoginAndSignUpState extends State<LoginAndSignUp> {
               //Show error login
               _showAlertDialog("Error", errorMessage)
             });
+  }
+
+  _savingTokenID(String token) async {
+    final SharedPreferences prefs = await _prefs;
+    prefs.setString('token', token);
+    print(token);
   }
 
   _showAlertDialog(String title, String content) {
@@ -344,5 +351,4 @@ class LoginAndSignUpState extends State<LoginAndSignUp> {
       },
     );
   }
-
 }
