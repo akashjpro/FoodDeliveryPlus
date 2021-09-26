@@ -66,7 +66,7 @@ class CartScreenBloc extends Bloc<CartScreenEvent, CartScreenState> {
           apiHelper.client.deleteCart('Bearer ${_token.trim()}', request),
           ((response) => {total = response.total}),
           (error) => {
-                errorMessage = error.getErrorMessage(),
+                errorMessage = error,
                 print("errorMessage: $errorMessage"),
               });
       return 'OK';
@@ -87,7 +87,7 @@ class CartScreenBloc extends Bloc<CartScreenEvent, CartScreenState> {
           apiHelper.client.updateCart('Bearer ${_token.trim()}', request),
           ((response) => {status = response}),
           (error) => {
-                errorMessage = error.getErrorMessage(),
+                errorMessage = error,
                 print("errorMessage: $errorMessage"),
               });
       return status;
@@ -107,7 +107,7 @@ class CartScreenBloc extends Bloc<CartScreenEvent, CartScreenState> {
         apiHelper.client.getProductInCart('Bearer ${_token.trim()}'),
         ((response) => {products = response.items}),
         (error) => {
-              errorMessage = error.getErrorMessage(),
+              errorMessage = error,
               print("errorMessage: $errorMessage"),
             });
     return products;

@@ -18,12 +18,14 @@ class ApiHelper {
   final client = ApiClient(Dio());
 
   Future<void> requestAPI<T>(Request request, Future<BaseResponse<T>> future,
-      onSuccess(T data), onFail(ServerError err)) async {
+      onSuccess(T data), onFail(String err)) async {
     try {
       await future.then((it) => onSuccess(it.data));
     } catch (error, stacktrace) {
       print("Exception occured: $error stackTrace: $stacktrace");
-      onFail(ServerError.withError(error: error as DioError));
+      error is DioError
+          ? onFail(ServerError.withError(error: error).getErrorMessage())
+          : onFail("${error.toString()}");
     }
   }
 
@@ -31,12 +33,14 @@ class ApiHelper {
       Request request,
       Future<BaseResponseNoDaTa<T>> future,
       onSuccess(String data),
-      onFail(ServerError err)) async {
+      onFail(String err)) async {
     try {
       await future.then((it) => onSuccess(it.data));
     } catch (error, stacktrace) {
       print("Exception occured: $error stackTrace: $stacktrace");
-      onFail(ServerError.withError(error: error as DioError));
+      error is DioError
+          ? onFail(ServerError.withError(error: error).getErrorMessage())
+          : onFail("${error.toString()}");
     }
   }
 }

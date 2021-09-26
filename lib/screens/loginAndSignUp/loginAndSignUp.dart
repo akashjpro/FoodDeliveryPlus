@@ -298,7 +298,7 @@ class LoginAndSignUpState extends State<LoginAndSignUp> {
                   Navigator.pop(context),
                   _isDialogLoadingShowing = false,
                 },
-              errorMessage = error.getErrorMessage(),
+              errorMessage = error,
               print("errorMessage: $errorMessage"),
 
               //Show error login
