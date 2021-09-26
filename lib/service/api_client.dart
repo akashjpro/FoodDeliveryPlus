@@ -18,12 +18,15 @@ abstract class ApiClient {
 
   @POST("/user/sign-in")
   Future<BaseResponse<LoginResponse>> login(@Body() Request request);
+
   @GET("/order/shopping-cart")
   Future<BaseResponse<GetProductInCartResponse>> getProductInCart(
       @Header("Authorization") String token);
+
   @POST("/order/update")
   Future<BaseResponseNoDaTa<UpdateCartResponse>> updateCart(
       @Header("Authorization") String token, @Body() Request request);
+  
   @DELETE("/order/delete")
   Future<BaseResponse<DeleteProductInCartResponse>> deleteCart(
       @Header("Authorization") String token, @Body() Request request);
