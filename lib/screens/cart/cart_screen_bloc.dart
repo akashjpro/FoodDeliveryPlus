@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_delivery/events/cart_screen_event.dart';
+import 'package:food_delivery/screens/cart/cart_screen_event.dart';
 import 'package:food_delivery/helper/api_helper.dart';
 import 'package:food_delivery/model/request/deleteProductInCart/delete_product_in_cart_request.dart';
 import 'package:food_delivery/model/request/getProductInCart/get_product_in_cart_request.dart';
