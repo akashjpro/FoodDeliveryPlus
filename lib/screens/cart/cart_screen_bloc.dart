@@ -84,10 +84,10 @@ class CartScreenBloc extends Bloc<CartScreenEvent, CartScreenState> {
       var _token = prefs.getString(keyToken)!;
       var request = UpdateCartRequest(item.orderId, item.foodId, counter);
       var errorMessage;
-      await apiHelper.requestAPINoData<UpdateCartResponse>(
+      await apiHelper.requestAPI<UpdateCartResponse>(
           request,
           apiHelper.client.updateCart('Bearer ${_token.trim()}', request),
-          ((response) => {status = response}),
+          ((response) => {status = response as String}),
           (error) => {
                 errorMessage = error,
                 print("errorMessage: $errorMessage"),

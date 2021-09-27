@@ -24,9 +24,9 @@ abstract class ApiClient {
       @Header("Authorization") String token);
 
   @POST("/order/update")
-  Future<BaseResponseNoDaTa<UpdateCartResponse>> updateCart(
+  Future<BaseResponse<UpdateCartResponse>> updateCart(
       @Header("Authorization") String token, @Body() Request request);
-  
+
   @DELETE("/order/delete")
   Future<BaseResponse<DeleteProductInCartResponse>> deleteCart(
       @Header("Authorization") String token, @Body() Request request);

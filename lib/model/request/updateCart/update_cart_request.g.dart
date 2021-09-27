@@ -6,12 +6,13 @@ part of 'update_cart_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-UpdateCartRequest _$UpdateCartRequestFromJson(Map<String, dynamic> json) =>
-    UpdateCartRequest(
-      json['orderId'] as String,
-      json['foodId'] as String,
-      json['quantity'] as int,
-    );
+UpdateCartRequest _$UpdateCartRequestFromJson(Map<String, dynamic> json) {
+  return UpdateCartRequest(
+    json['orderId'] as String,
+    json['foodId'] as String,
+    json['quantity'] as int,
+  );
+}
 
 Map<String, dynamic> _$UpdateCartRequestToJson(UpdateCartRequest instance) =>
     <String, dynamic>{
