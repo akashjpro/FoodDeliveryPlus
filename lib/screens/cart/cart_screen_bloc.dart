@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_delivery/app_data.dart';
 import 'package:food_delivery/screens/cart/cart_screen_event.dart';
 import 'package:food_delivery/helper/api_helper.dart';
 import 'package:food_delivery/model/request/deleteProductInCart/delete_product_in_cart_request.dart';
@@ -9,13 +10,9 @@ import 'package:food_delivery/model/response/deleteProductInCart/delete_product_
 import 'package:food_delivery/model/response/getProductInCart/get_product_in_cart_response.dart';
 import 'package:food_delivery/model/response/updateCart/update_cart_response.dart';
 import 'package:food_delivery/states/cart_screen_state.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../constants.dart';
 
 class CartScreenBloc extends Bloc<CartScreenEvent, CartScreenState> {
   final ApiHelper apiHelper;
-  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   CartScreenBloc({required this.apiHelper}) : super(CartScreenStateInitial());
   @override
   Stream<CartScreenState> mapEventToState(CartScreenEvent event) async* {
@@ -58,9 +55,8 @@ class CartScreenBloc extends Bloc<CartScreenEvent, CartScreenState> {
 
   Future<String> _deleteProduct(ProductInCart item) async {
     try {
-      final SharedPreferences prefs = await _prefs;
       var total;
-      var _token = prefs.getString(keyToken)!;
+      var _token = AppData.instance.token;
       var request = DeleteProductInCartRequest(item.foodId);
       var errorMessage;
       await apiHelper.requestAPI<DeleteProductInCartResponse>(
@@ -71,7 +67,10 @@ class CartScreenBloc extends Bloc<CartScreenEvent, CartScreenState> {
                 errorMessage = error,
                 print("errorMessage: $errorMessage"),
               });
-      return 'OK';
+      if (total > 0)
+        return 'OK';
+      else
+        return 'Faild';
     } catch (e) {
       return e.toString();
     }
@@ -79,15 +78,14 @@ class CartScreenBloc extends Bloc<CartScreenEvent, CartScreenState> {
 
   Future<String> _updateProduct(ProductInCart item, int counter) async {
     try {
-      final SharedPreferences prefs = await _prefs;
       String status = '';
-      var _token = prefs.getString(keyToken)!;
+      var _token = AppData.instance.token;
       var request = UpdateCartRequest(item.orderId, item.foodId, counter);
       var errorMessage;
-      await apiHelper.requestAPI<UpdateCartResponse>(
+      await apiHelper.requestAPINoData<UpdateCartResponse>(
           request,
           apiHelper.client.updateCart('Bearer ${_token.trim()}', request),
-          ((response) => {status = response as String}),
+          ((response) => {status = response}),
           (error) => {
                 errorMessage = error,
                 print("errorMessage: $errorMessage"),
@@ -100,8 +98,7 @@ class CartScreenBloc extends Bloc<CartScreenEvent, CartScreenState> {
 
   Future<List<ProductInCart>> _fetchData() async {
     List<ProductInCart> products = [];
-    final SharedPreferences prefs = await _prefs;
-    var _token = prefs.getString(keyToken)!;
+    var _token = AppData.instance.token;
     var request = GetProductInCartRequest();
     var errorMessage;
     await apiHelper.requestAPI<GetProductInCartResponse>(

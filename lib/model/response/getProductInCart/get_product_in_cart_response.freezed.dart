@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'get_product_in_cart_response.dart';
 
@@ -170,7 +171,7 @@ class _$_GetProductInCartResponse
       required this.updatedAt});
 
   factory _$_GetProductInCartResponse.fromJson(Map<String, dynamic> json) =>
-      _$_$_GetProductInCartResponseFromJson(json);
+      _$$_GetProductInCartResponseFromJson(json);
 
   @override
   final int total;
@@ -229,7 +230,7 @@ class _$_GetProductInCartResponse
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_GetProductInCartResponseToJson(this);
+    return _$$_GetProductInCartResponseToJson(this);
   }
 }
 
@@ -475,7 +476,7 @@ class _$_ProductInCart with DiagnosticableTreeMixin implements _ProductInCart {
       required this.updatedAt});
 
   factory _$_ProductInCart.fromJson(Map<String, dynamic> json) =>
-      _$_$_ProductInCartFromJson(json);
+      _$$_ProductInCartFromJson(json);
 
   @override
   final String orderId;
@@ -560,7 +561,7 @@ class _$_ProductInCart with DiagnosticableTreeMixin implements _ProductInCart {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ProductInCartToJson(this);
+    return _$$_ProductInCartToJson(this);
   }
 }
 

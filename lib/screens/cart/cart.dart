@@ -88,7 +88,7 @@ class CartState extends State<Cart> {
                 );
               else {
                 return Container(
-                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  padding: EdgeInsets.only(left: 40, right: 40, bottom: 80),
                   child: Column(
                     children: [
                       Container(

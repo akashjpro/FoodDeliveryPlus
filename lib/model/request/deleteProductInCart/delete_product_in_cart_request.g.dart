@@ -7,11 +7,10 @@ part of 'delete_product_in_cart_request.dart';
 // **************************************************************************
 
 DeleteProductInCartRequest _$DeleteProductInCartRequestFromJson(
-    Map<String, dynamic> json) {
-  return DeleteProductInCartRequest(
-    json['foodId'] as String,
-  );
-}
+        Map<String, dynamic> json) =>
+    DeleteProductInCartRequest(
+      json['foodId'] as String,
+    );
 
 Map<String, dynamic> _$DeleteProductInCartRequestToJson(
         DeleteProductInCartRequest instance) =>

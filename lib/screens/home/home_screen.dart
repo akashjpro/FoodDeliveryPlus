@@ -4,6 +4,9 @@ import 'package:food_delivery/constants.dart';
 import 'package:food_delivery/screens/cart/cart.dart';
 import 'package:food_delivery/screens/detail/detail_page.dart';
 import 'package:food_delivery/screens/home/widgets/food_container.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../app_data.dart';
 
 class HomeScreen extends StatefulWidget {
   final drawerController;
@@ -15,12 +18,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  void getToken() async {
+    final SharedPreferences prefs = await _prefs;
+    var token = prefs.getString(keyToken);
+    AppData.instance.setToken(token!);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getToken();
   }
 
   @override

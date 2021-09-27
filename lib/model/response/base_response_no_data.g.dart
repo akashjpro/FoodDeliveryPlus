@@ -9,13 +9,12 @@ part of 'base_response_no_data.dart';
 BaseResponseNoDaTa<T> _$BaseResponseNoDaTaFromJson<T>(
   Map<String, dynamic> json,
   T Function(Object? json) fromJsonT,
-) {
-  return BaseResponseNoDaTa<T>(
-    code: json['code'] as int,
-    data: json['data'] as String,
-    message: json['message'] as String?,
-  );
-}
+) =>
+    BaseResponseNoDaTa<T>(
+      code: json['code'] as int,
+      data: json['data'] as String,
+      message: json['message'] as String?,
+    );
 
 Map<String, dynamic> _$BaseResponseNoDaTaToJson<T>(
   BaseResponseNoDaTa<T> instance,

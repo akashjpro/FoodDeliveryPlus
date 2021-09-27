@@ -51,20 +51,21 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<BaseResponse<UpdateCartResponse>> updateCart(token, request) async {
+  Future<BaseResponseNoDaTa<UpdateCartResponse>> updateCart(
+      token, request) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(request.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseResponse<UpdateCartResponse>>(Options(
+        _setStreamType<BaseResponseNoDaTa<UpdateCartResponse>>(Options(
                 method: 'POST',
                 headers: <String, dynamic>{r'Authorization': token},
                 extra: _extra)
             .compose(_dio.options, '/order/update',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = BaseResponse<UpdateCartResponse>.fromJson(
+    final value = BaseResponseNoDaTa<UpdateCartResponse>.fromJson(
       _result.data!,
       (json) => UpdateCartResponse.fromJson(json as Map<String, dynamic>),
     );

@@ -7,9 +7,8 @@ part of 'get_product_in_cart_request.dart';
 // **************************************************************************
 
 GetProductInCartRequest _$GetProductInCartRequestFromJson(
-    Map<String, dynamic> json) {
-  return GetProductInCartRequest();
-}
+        Map<String, dynamic> json) =>
+    GetProductInCartRequest();
 
 Map<String, dynamic> _$GetProductInCartRequestToJson(
         GetProductInCartRequest instance) =>
