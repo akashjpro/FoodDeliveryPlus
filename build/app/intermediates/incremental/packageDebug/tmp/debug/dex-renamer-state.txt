@@ -1,4 +1,4 @@
-#Sat Sep 25 15:30:19 ICT 2021
-base.0=C\:\\Users\\Admin\\Desktop\\THUCTAP\\FoodDeliveryPlus\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-renamed.0=classes.dex
+#Mon Sep 27 08:48:29 ICT 2021
+base.0=D\:\\New folder (7)\\FoodDeliveryPlus\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
+renamed.0=classes.dex

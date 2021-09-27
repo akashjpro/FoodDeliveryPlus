@@ -1,14 +1,17 @@
 import 'dart:ui';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_delivery/helper/api.dart';
 import 'package:food_delivery/model/food_model.dart';
+import 'package:food_delivery/model/response/base_response.dart';
+import 'package:food_delivery/model/response/detailFood/food_response.dart';
+import 'package:food_delivery/service/api_client.dart';
 import 'package:food_delivery/size_config.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class DetailPage extends StatefulWidget {
-
   static String routeName = "/DetailPage";
 
   const DetailPage({Key? key}) : super(key: key);
@@ -33,15 +36,12 @@ class _DetailPageState extends State<DetailPage> {
     'assets/images/image_2.png',
   ];
 
-  late Future<FoodModel> foodModel;
   late String foodId = '40fc68da-eb8d-42a5-bd91-250fd2996b19';
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    foodModel = fetchFood(foodId);
-    print(foodModel);
   }
 
   @override
@@ -52,91 +52,93 @@ class _DetailPageState extends State<DetailPage> {
         height: double.infinity,
         width: double.infinity,
         color: Color(0xffF6F6F9),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            GroudIcon(),
-            PageViewItems(),
-            Container(
-              margin: EdgeInsets.only(top: 20),
-              child: Center(child: SmoothPage()),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 10),
-              child: TextFoodDetail(),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 10),
-              child: Center(
-                child: Text(
-                  'N1,900',
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.red,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GroudIcon(),
+              PageViewItems(),
+              Container(
+                margin: EdgeInsets.only(top: 20),
+                child: Center(child: SmoothPage()),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 10),
+                child: TextFoodDetail(),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 10),
+                child: Center(
+                  child: Text(
+                    'N1,900',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.only(
-                left: SizeConfig.screenwidth * 0.1,
-                right: SizeConfig.screenwidth * 0.1,
-                top: SizeConfig.screenheight * 0.05,
-              ),
-              child: Text(
-                'Delivery info',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+              Container(
+                margin: EdgeInsets.only(
+                  left: SizeConfig.screenwidth * 0.1,
+                  right: SizeConfig.screenwidth * 0.1,
+                  top: SizeConfig.screenheight * 0.05,
+                ),
+                child: Text(
+                  'Delivery info',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.only(
-                left: SizeConfig.screenwidth * 0.1,
-                right: SizeConfig.screenwidth * 0.1,
-                top: 5,
-              ),
-              child: Text(
-                'Delivered between monday aug and \nthursday 20 from 8pm to 91:32 pm',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.black.withOpacity(0.5),
+              Container(
+                margin: EdgeInsets.only(
+                  left: SizeConfig.screenwidth * 0.1,
+                  right: SizeConfig.screenwidth * 0.1,
+                  top: 5,
+                ),
+                child: Text(
+                  'Delivered between monday aug and \nthursday 20 from 8pm to 91:32 pm',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black.withOpacity(0.5),
+                  ),
                 ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.only(
-                left: SizeConfig.screenwidth * 0.1,
-                right: SizeConfig.screenwidth * 0.1,
-                top: SizeConfig.screenheight * 0.05,
-                bottom: 5,
-              ),
-              child: Text(
-                'Return policy',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+              Container(
+                margin: EdgeInsets.only(
+                  left: SizeConfig.screenwidth * 0.1,
+                  right: SizeConfig.screenwidth * 0.1,
+                  top: SizeConfig.screenheight * 0.05,
+                  bottom: 5,
+                ),
+                child: Text(
+                  'Return policy',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.only(
-                left: SizeConfig.screenwidth * 0.1,
-                right: SizeConfig.screenwidth * 0.1,
+              Container(
+                margin: EdgeInsets.only(
+                  left: SizeConfig.screenwidth * 0.1,
+                  right: SizeConfig.screenwidth * 0.1,
+                ),
+                child: Rich_Text(),
               ),
-              child: Rich_Text(),
-            ),
-            Container(
-              margin: EdgeInsets.only(
-                left: SizeConfig.screenwidth * 0.1,
-                right: SizeConfig.screenwidth * 0.1,
-                top: SizeConfig.screenheight * 0.05,
+              Container(
+                margin: EdgeInsets.only(
+                  left: SizeConfig.screenwidth * 0.1,
+                  right: SizeConfig.screenwidth * 0.1,
+                  top: SizeConfig.screenheight * 0.05,
+                ),
+                child: ButtonAddToCart(),
               ),
-              child: ButtonAddToCart(),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -148,7 +150,7 @@ class _DetailPageState extends State<DetailPage> {
       width: double.infinity,
       child: RaisedButton(
         onPressed: () {
-          print('button');
+          ApiClient(Dio()).getFoodDetails(foodId).then((value) => print(value));
         },
         child: Text(
           'Add to cart',
@@ -169,12 +171,12 @@ class _DetailPageState extends State<DetailPage> {
 
   Widget TextFoodDetail() {
     return Center(
-      child: FutureBuilder<FoodModel>(
-        future: foodModel,
+      child: FutureBuilder<BaseResponse<FoodResponse>>(
+        future: ApiClient(Dio()).getFoodDetails(foodId),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Text(
-              snapshot.data!.foodName,
+              snapshot.data!.data.foodName,
               style: TextStyle(
                 fontSize: 28,
                 color: Colors.black,
@@ -193,19 +195,19 @@ class _DetailPageState extends State<DetailPage> {
   Widget PageViewItems() {
     return Container(
       width: SizeConfig.screenwidth,
-      height: SizeConfig.screenheight * 0.3,
+      height: SizeConfig.screenheight * 0.25,
       margin: EdgeInsets.only(top: 10),
-      child: FutureBuilder<FoodModel>(
-          future: foodModel,
+      child: FutureBuilder<BaseResponse<FoodResponse>>(
+          future: ApiClient(Dio()).getFoodDetails(foodId),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return PageView.builder(
                 controller: _pageviewcontroller,
-                itemCount: snapshot.data!.images.length,
+                itemCount: snapshot.data!.data.images.length,
                 itemBuilder: (items, index) {
                   if (snapshot.hasData) {
                     return Image.network(
-                      snapshot.data!.images[index].imageUrl,
+                      snapshot.data!.data.images[index].imageUrl,
                       fit: BoxFit.fill,
                     );
                   } else if (snapshot.hasError) {
@@ -223,12 +225,12 @@ class _DetailPageState extends State<DetailPage> {
   }
 
   Widget SmoothPage() {
-    return FutureBuilder<FoodModel>(
-        future: foodModel,
+    return FutureBuilder<BaseResponse<FoodResponse>>(
+        future: ApiClient(Dio()).getFoodDetails(foodId),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return SmoothPageIndicator(
-              count: snapshot.data!.images.length,
+              count: snapshot.data!.data.images.length,
               controller: _pageviewcontroller,
               effect: WormEffect(
                 spacing: 10.0,

@@ -1,6 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'update_cart_response.dart';
 
@@ -117,7 +116,7 @@ class _$_UpdateCartResponse
   const _$_UpdateCartResponse({required this.data});
 
   factory _$_UpdateCartResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_UpdateCartResponseFromJson(json);
+      _$_$_UpdateCartResponseFromJson(json);
 
   @override
   final String data;
@@ -154,7 +153,7 @@ class _$_UpdateCartResponse
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UpdateCartResponseToJson(this);
+    return _$_$_UpdateCartResponseToJson(this);
   }
 }
 

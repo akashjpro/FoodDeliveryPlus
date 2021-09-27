@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart' hide Headers;
 import 'package:food_delivery/model/response/base_response_no_data.dart';
 import 'package:food_delivery/model/response/deleteProductInCart/delete_product_in_cart_response.dart';
+import 'package:food_delivery/model/response/detailFood/food_response.dart';
 import 'package:food_delivery/model/response/getProductInCart/get_product_in_cart_response.dart';
 import 'package:food_delivery/model/response/login_response.dart';
 import 'package:food_delivery/model/request/request.dart';
@@ -26,8 +27,12 @@ abstract class ApiClient {
   @POST("/order/update")
   Future<BaseResponseNoDaTa<UpdateCartResponse>> updateCart(
       @Header("Authorization") String token, @Body() Request request);
-  
+
   @DELETE("/order/delete")
   Future<BaseResponse<DeleteProductInCartResponse>> deleteCart(
       @Header("Authorization") String token, @Body() Request request);
+
+  @GET('/food/detail/{foodId}')
+  Future<BaseResponse<FoodResponse>> getFoodDetails(
+      @Path('foodId') String foodId);
 }
