@@ -2,6 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/screens/screens.dart';
 
+// Key token
+const keyToken = "token";
+
+
+/////////////=======================///////////////////////
+
 List<Map> categories = [
   {'name': 'Foods', 'isActive': true},
   {'name': 'Drinks', 'isActive': false},

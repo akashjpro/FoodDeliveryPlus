@@ -11,6 +11,8 @@ import 'package:food_delivery/model/response/updateCart/update_cart_response.dar
 import 'package:food_delivery/states/cart_screen_state.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../constants.dart';
+
 class CartScreenBloc extends Bloc<CartScreenEvent, CartScreenState> {
   final ApiHelper apiHelper;
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -58,7 +60,7 @@ class CartScreenBloc extends Bloc<CartScreenEvent, CartScreenState> {
     try {
       final SharedPreferences prefs = await _prefs;
       var total;
-      var _token = prefs.getString('token')!;
+      var _token = prefs.getString(keyToken)!;
       var request = DeleteProductInCartRequest(item.foodId);
       var errorMessage;
       await apiHelper.requestAPI<DeleteProductInCartResponse>(
@@ -79,7 +81,7 @@ class CartScreenBloc extends Bloc<CartScreenEvent, CartScreenState> {
     try {
       final SharedPreferences prefs = await _prefs;
       String status = '';
-      var _token = prefs.getString('token')!;
+      var _token = prefs.getString(keyToken)!;
       var request = UpdateCartRequest(item.orderId, item.foodId, counter);
       var errorMessage;
       await apiHelper.requestAPINoData<UpdateCartResponse>(
@@ -99,7 +101,7 @@ class CartScreenBloc extends Bloc<CartScreenEvent, CartScreenState> {
   Future<List<ProductInCart>> _fetchData() async {
     List<ProductInCart> products = [];
     final SharedPreferences prefs = await _prefs;
-    var _token = prefs.getString('token')!;
+    var _token = prefs.getString(keyToken)!;
     var request = GetProductInCartRequest();
     var errorMessage;
     await apiHelper.requestAPI<GetProductInCartResponse>(
