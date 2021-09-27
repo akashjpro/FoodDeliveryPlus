@@ -1,15 +1,13 @@
 class AppData {
-  static final AppData _singleton = AppData._internal();
+  static final AppData _instance = AppData._internal();
 
-  var _token = "";
+  static AppData get instance  => _instance;
 
-  factory AppData() {
-    return _singleton;
-  }
+  String _token = "";
 
   AppData._internal();
 
-  String getToken() => this._token;
+  String get token => _token;
 
   void setToken(String token) => _token = token;
 }
