@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart' hide Headers;
+import 'package:food_delivery/model/response/addToCart/add_to_cart.dart';
 import 'package:food_delivery/model/response/base_response_no_data.dart';
 import 'package:food_delivery/model/response/deleteProductInCart/delete_product_in_cart_response.dart';
 import 'package:food_delivery/model/response/detailFood/food_response.dart';
@@ -35,4 +36,9 @@ abstract class ApiClient {
   @GET('/food/detail/{foodId}')
   Future<BaseResponse<FoodResponse>> getFoodDetails(
       @Path('foodId') String foodId);
+
+  @POST('/order/add-to-cart')
+  Future<BaseResponse<DataAddToCart>> AddToCart(
+    @Header("Authorization") String token, @Body() Request request);
+
 }

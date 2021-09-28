@@ -2,11 +2,16 @@ import 'dart:ui';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_delivery/helper/api.dart';
+import 'package:food_delivery/helper/api_helper.dart';
 import 'package:food_delivery/model/food_model.dart';
 import 'package:food_delivery/model/response/base_response.dart';
 import 'package:food_delivery/model/response/detailFood/food_response.dart';
+import 'package:food_delivery/screens/detail/detail_food_bloc.dart';
+import 'package:food_delivery/screens/detail/detail_food_event.dart';
+import 'package:food_delivery/screens/detail/detail_food_state.dart';
 import 'package:food_delivery/service/api_client.dart';
 import 'package:food_delivery/size_config.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -28,15 +33,9 @@ class _DetailPageState extends State<DetailPage> {
   Color colorText = Color(0xffF6F6F9);
   //late Color mainDetailColor = Colors.amberAccent;
 
-  List<String> images = [
-    'assets/images/image_2.png',
-    'assets/images/image_2.png',
-    'assets/images/image_2.png',
-    'assets/images/image_2.png',
-    'assets/images/image_2.png',
-  ];
-
   late String foodId = '40fc68da-eb8d-42a5-bd91-250fd2996b19';
+
+  final apiHelper = ApiHelper();
 
   @override
   void initState() {
@@ -48,109 +47,127 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        color: Color(0xffF6F6F9),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              GroudIcon(),
-              PageViewItems(),
-              Container(
-                margin: EdgeInsets.only(top: 20),
-                child: Center(child: SmoothPage()),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: 10),
-                child: TextFoodDetail(),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: 10),
-                child: Center(
-                  child: Text(
-                    'N1,900',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.red,
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                  left: SizeConfig.screenwidth * 0.1,
-                  right: SizeConfig.screenwidth * 0.1,
-                  top: SizeConfig.screenheight * 0.05,
-                ),
-                child: Text(
-                  'Delivery info',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                  left: SizeConfig.screenwidth * 0.1,
-                  right: SizeConfig.screenwidth * 0.1,
-                  top: 5,
-                ),
-                child: Text(
-                  'Delivered between monday aug and \nthursday 20 from 8pm to 91:32 pm',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.black.withOpacity(0.5),
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                  left: SizeConfig.screenwidth * 0.1,
-                  right: SizeConfig.screenwidth * 0.1,
-                  top: SizeConfig.screenheight * 0.05,
-                  bottom: 5,
-                ),
-                child: Text(
-                  'Return policy',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                  left: SizeConfig.screenwidth * 0.1,
-                  right: SizeConfig.screenwidth * 0.1,
-                ),
-                child: Rich_Text(),
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                  left: SizeConfig.screenwidth * 0.1,
-                  right: SizeConfig.screenwidth * 0.1,
-                  top: SizeConfig.screenheight * 0.05,
-                ),
-                child: ButtonAddToCart(),
-              ),
-            ],
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => DetailFoodBloc(apiHelper: apiHelper),
+          ),
+        ],
+        child: Container(
+          height: double.infinity,
+          width: double.infinity,
+          color: Color(0xffF6F6F9),
+          child: BlocBuilder(
+            bloc: DetailFoodBloc(apiHelper: apiHelper),
+            builder: (BuildContext context, DetailFoodState state) {
+              return column(context);
+            },
           ),
         ),
       ),
     );
   }
 
-  Widget ButtonAddToCart() {
+  SingleChildScrollView column(BuildContext context) {
+    return SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            GroudIcon(),
+            PageViewItems(),
+            Container(
+              margin: EdgeInsets.only(top: 20),
+              child: Center(child: SmoothPage()),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 10),
+              child: TextFoodDetail(),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 10),
+              child: Center(
+                child: Text(
+                  'N1,900',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                left: SizeConfig.screenwidth * 0.1,
+                right: SizeConfig.screenwidth * 0.1,
+                top: SizeConfig.screenheight * 0.05,
+              ),
+              child: Text(
+                'Delivery info',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                left: SizeConfig.screenwidth * 0.1,
+                right: SizeConfig.screenwidth * 0.1,
+                top: 5,
+              ),
+              child: Text(
+                'Delivered between monday aug and \nthursday 20 from 8pm to 91:32 pm',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.black.withOpacity(0.5),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                left: SizeConfig.screenwidth * 0.1,
+                right: SizeConfig.screenwidth * 0.1,
+                top: SizeConfig.screenheight * 0.05,
+                bottom: 5,
+              ),
+              child: Text(
+                'Return policy',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                left: SizeConfig.screenwidth * 0.1,
+                right: SizeConfig.screenwidth * 0.1,
+              ),
+              child: Rich_Text(),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                left: SizeConfig.screenwidth * 0.1,
+                right: SizeConfig.screenwidth * 0.1,
+                top: SizeConfig.screenheight * 0.05,
+              ),
+              child: ButtonAddToCart(context),
+            ),
+          ],
+        ),
+      );
+  }
+
+  Widget ButtonAddToCart(BuildContext _context) {
     return SizedBox(
       height: SizeConfig.screenheight * 0.07,
       width: double.infinity,
       child: RaisedButton(
         onPressed: () {
-          ApiClient(Dio()).getFoodDetails(foodId).then((value) => print(value));
+          //ApiClient(Dio()).getFoodDetails(foodId).then((value) => print(value));
+          BlocProvider.of<DetailFoodBloc>(_context)
+            ..add(addToCart(foodId: foodId));
         },
         child: Text(
           'Add to cart',
